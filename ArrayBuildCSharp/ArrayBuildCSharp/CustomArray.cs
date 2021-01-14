@@ -19,6 +19,12 @@ namespace ArrayBuildCSharp
             arr = new T[size];
         }
 
+        public CustomArray(CustomArray<T> that)
+        {
+            this.size = that.size;
+            this.arr = that.arr;
+        }
+
         public T this[int i]
         {
             get {
@@ -56,6 +62,28 @@ namespace ArrayBuildCSharp
                 arrNew[j + 1] = arr[j];
             }
             size++;
+            arr = arrNew;
+        }
+
+        public void insert(CustomArray<T> val, int i)
+        {
+            if (i < 0 || i > size)
+                throw new IndexOutOfRangeException("index " + i + " is out of range [0-" + (size - 1) + "].");
+
+            T[] arrNew = new T[this.size + val.size];
+            for (int j = 0; j < i; j++) {
+                arrNew[j] = arr[j];
+            }
+            // THIS IS JUST FOR ALGORITHM DEMONSTRATION, 
+            // USE Array.Copy(val.arr, 0, arr, i, val.size);
+            Array.Copy(val.arr, 0, arrNew, i, val.size);
+            //for (int j = 0; j < val.size; j++) {
+            //    arrNew[j + i] = val[j];
+            //}
+            for (int j = i; j < size; j++) {
+                arrNew[j + val.size] = arr[j];
+            }
+            size += val.size;
             arr = arrNew;
         }
 

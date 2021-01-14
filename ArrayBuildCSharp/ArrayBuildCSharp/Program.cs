@@ -46,6 +46,35 @@ namespace ArrayBuildCSharp
                 Console.Write("" + ar.remove((int)(ar.size / 2)) + " ");
                 WriteArray(ar);
             }
+
+            Console.WriteLine();
+            Console.WriteLine(size = 4);
+            CustomArray<int> insertAr1 = new CustomArray<int>(size);
+            for (int i = 0; i < size; i++)
+            {
+                insertAr1[i] = i;
+            }
+
+            CustomArray<int> insertArDemo = new CustomArray<int>(size);
+            for (int i = 0; i < size; i++)
+            {
+                insertArDemo[i] = i + (int)size;
+            }
+
+            CustomArray<int> insertAr2 = new CustomArray<int>(insertAr1);
+            CustomArray<int> insertAr3 = new CustomArray<int>(insertAr1);
+            WriteArray(insertAr1);
+            WriteArray(insertAr2);
+            WriteArray(insertAr3);
+            WriteArray(insertArDemo);
+            insertAr1.insert(insertArDemo, (int)insertAr1.size);
+            insertAr2.insert(insertArDemo, (int)(insertAr2.size/2));
+            insertAr3.insert(insertArDemo, 0);
+            Console.WriteLine();
+            WriteArray(insertAr1);
+            WriteArray(insertAr2);
+            WriteArray(insertAr3);
+            WriteArray(insertArDemo);
         }
     }
 }

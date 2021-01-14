@@ -10,6 +10,7 @@ class Arr
 {
 	T * arr;
 	unsigned int Size;
+
 public:
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -58,11 +59,11 @@ public:
 	/////////////////////////////////////////////////////////////////////////////
 	// Function : operator[]
 	// Parameters : index - the index to access
-	// Return : T & - returns the array element at [index]
+	// Return : const T & - returns the array element at [index]
 	// Notes : performs no error checking. user should ensure index is 
 	//		valid with the size() method
 	/////////////////////////////////////////////////////////////////////////////
-	T& operator[](const unsigned int index) {
+	const T& operator[](const unsigned int index) const {
 		if (index >= Size || index < 0) throw std::out_of_range("index out of range");
 		return arr[index];
 	}
@@ -70,11 +71,11 @@ public:
 	/////////////////////////////////////////////////////////////////////////////
 	// Function : operator[]
 	// Parameters : index - the index to access
-	// Return : const T & - returns the array element at [index]
+	// Return : T & - returns the array element at [index]
 	// Notes : performs no error checking. user should ensure index is 
 	//		valid with the size() method
 	/////////////////////////////////////////////////////////////////////////////
-	const T& operator[](const unsigned int index) const {
+	T& operator[](const unsigned int index) {
 		if (index >= Size || index < 0) throw std::out_of_range("index out of range");
 		return arr[index];
 	}

@@ -12,6 +12,7 @@ int main()
     unsigned int len = 5;
     // Testing constructor
     Arr<int>* ar = new Arr<int>(len);
+    std::cout << ar << "\n";
     // Testing Bracket [] operator
     for (unsigned int i = 0; i < len; i++) {
         (*ar)[i] = i+1;
@@ -23,24 +24,32 @@ int main()
     std::cout << "\n";
 
     // Testing for consts.
-    const int i0 = 0;
+    Arr<int>* arConst = new Arr<int>(len);
+    for (size_t i = 0; i < len; i++)
+    {
+        const int j = i;
+        (*arConst)[i] = j;
+    }
+    for (unsigned int i = 0; i < arConst->size(); i++) {
+        std::cout << "Const " << (*arConst)[i] << " ";
+    }
+    /*const int i0 = 0;
     const int i1 = 1;
     const int i2 = 2;
     const int i3 = 3;
     const int i4 = 4;
     const int i5 = 5;
-    Arr<int>* arConst = new Arr<int>(len);
     (*arConst)[0] = i0;
     (*arConst)[1] = i1;
     (*arConst)[2] = i2;
     (*arConst)[3] = i3;
-    (*arConst)[4] = i4;
+    (*arConst)[4] = i4;*/
     
-    std::cout << (*arConst)[i0];
+    /*std::cout << (*arConst)[i0];
     std::cout << (*arConst)[i1];
     std::cout << (*arConst)[i2];
     std::cout << (*arConst)[i3];
-    std::cout << (*arConst)[i4];
+    std::cout << (*arConst)[i4];*/
     // Testing for exceptions (exceptions worked, but go ahead and try it)
     //std::cout << (*arConst)[i5];
     std::cout << "\n";

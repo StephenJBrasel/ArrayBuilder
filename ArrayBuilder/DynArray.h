@@ -66,7 +66,6 @@ public:
 		return array[index];
 	}
 
-
 	/////////////////////////////////////////////////////////////////////////////
 	// Function : operator[]
 	// Parameters : index - the index to access
@@ -78,6 +77,7 @@ public:
 	{
 		return array[index];
 	}
+
 	/////////////////////////////////////////////////////////////////////////////
 	// Function :	size
 	// Returns : int - returns the number of items being stored
@@ -87,6 +87,7 @@ public:
 	{
 		return Size;
 	}
+
 	/////////////////////////////////////////////////////////////////////////////
 	// Function : capacity
 	// Returns : int - returns the number of items the array can store before 
@@ -155,14 +156,15 @@ public:
 	{
 		if (newCap == 0)
 		{
-			if (0 == Capacity)
+			Capacity = (Capacity == 0) ? 1 : Capacity * 2;
+		/*	if (0 == Capacity)
 			{
 				Capacity = 1;
 			}
 			else
 			{
 				Capacity *= 2;
-			}
+			}*/
 		}
 		else if (newCap > Capacity)
 			Capacity = newCap;
